@@ -57,7 +57,7 @@
 		E91F70501D9BABCE00671C3D /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = E91F703B1D9BABCE00671C3D /* pwd2key.h */; };
 		E91F70511D9BABCE00671C3D /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = E91F703C1D9BABCE00671C3D /* sha1.c */; };
 		E91F70521D9BABCE00671C3D /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = E91F703D1D9BABCE00671C3D /* sha1.h */; };
-		E91F70561D9BAC7700671C3D /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E91F70551D9BAC7700671C3D /* libz.1.dylib */; };
+		E9363DB01DFA5F8000CBE832 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9363DAF1DFA5F8000CBE832 /* libz.1.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 		E91F703B1D9BABCE00671C3D /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
 		E91F703C1D9BABCE00671C3D /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		E91F703D1D9BABCE00671C3D /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		E91F70551D9BAC7700671C3D /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
+		E9363DAF1DFA5F8000CBE832 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E91F70561D9BAC7700671C3D /* libz.1.dylib in Frameworks */,
+				E9363DB01DFA5F8000CBE832 /* libz.1.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 		E91F6FB01D9BA8E600671C3D = {
 			isa = PBXGroup;
 			children = (
-				E91F6FD41D9BA91100671C3D /* Frameworks */,
+				E9363DAC1DFA5D4E00CBE832 /* Frameworks */,
 				E91F6FBC1D9BA8E600671C3D /* ZipArchive */,
 				E91F6FC71D9BA8E600671C3D /* ZipArchiveTests */,
 				E91F6FBB1D9BA8E600671C3D /* Products */,
@@ -173,14 +173,6 @@
 				E91F6FCA1D9BA8E600671C3D /* Info.plist */,
 			);
 			path = ZipArchiveTests;
-			sourceTree = "<group>";
-		};
-		E91F6FD41D9BA91100671C3D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E91F70551D9BAC7700671C3D /* libz.1.dylib */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		E91F6FDE1D9BAB8600671C3D /* doc */ = {
@@ -245,6 +237,14 @@
 				E91F703D1D9BABCE00671C3D /* sha1.h */,
 			);
 			path = aes;
+			sourceTree = "<group>";
+		};
+		E9363DAC1DFA5D4E00CBE832 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9363DAF1DFA5F8000CBE832 /* libz.1.dylib */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,7 +322,7 @@
 		E91F6FB11D9BA8E600671C3D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "思源";
 				TargetAttributes = {
 					E91F6FB91D9BA8E600671C3D = {
@@ -450,6 +450,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -501,6 +502,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -536,6 +538,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks";
 				INFOPLIST_FILE = ZipArchive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -557,6 +560,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks";
 				INFOPLIST_FILE = ZipArchive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -629,6 +633,7 @@
 				E91F6FD01D9BA8E600671C3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E91F6FD11D9BA8E600671C3D /* Build configuration list for PBXNativeTarget "ZipArchiveTests" */ = {
 			isa = XCConfigurationList;
@@ -637,6 +642,7 @@
 				E91F6FD31D9BA8E600671C3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E91F6FD81D9BA96F00671C3D /* Build configuration list for PBXAggregateTarget "ZipArchiveAgg" */ = {
 			isa = XCConfigurationList;
@@ -645,6 +651,7 @@
 				E91F6FDA1D9BA96F00671C3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
