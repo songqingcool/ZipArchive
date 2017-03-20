@@ -78,7 +78,6 @@
 		E91F6FC81D9BA8E600671C3D /* ZipArchiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZipArchiveTests.m; sourceTree = "<group>"; };
 		E91F6FCA1D9BA8E600671C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E91F6FDC1D9BA9D900671C3D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
-		E91F6FDF1D9BAB8600671C3D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E91F6FF81D9BAB8600671C3D /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		E91F6FF91D9BAB8600671C3D /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		E91F6FFA1D9BAB8600671C3D /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -157,7 +156,6 @@
 		E91F6FBC1D9BA8E600671C3D /* ZipArchive */ = {
 			isa = PBXGroup;
 			children = (
-				E91F6FDE1D9BAB8600671C3D /* doc */,
 				E91F6FE01D9BAB8600671C3D /* SSZipArchive */,
 				E91F6FBD1D9BA8E600671C3D /* ZipArchive.h */,
 				E91F6FBE1D9BA8E600671C3D /* Info.plist */,
@@ -173,14 +171,6 @@
 				E91F6FCA1D9BA8E600671C3D /* Info.plist */,
 			);
 			path = ZipArchiveTests;
-			sourceTree = "<group>";
-		};
-		E91F6FDE1D9BAB8600671C3D /* doc */ = {
-			isa = PBXGroup;
-			children = (
-				E91F6FDF1D9BAB8600671C3D /* README.md */,
-			);
-			path = doc;
 			sourceTree = "<group>";
 		};
 		E91F6FE01D9BAB8600671C3D /* SSZipArchive */ = {
@@ -327,7 +317,7 @@
 				TargetAttributes = {
 					E91F6FB91D9BA8E600671C3D = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					E91F6FC21D9BA8E600671C3D = {
 						CreatedOnToolsVersion = 8.0;
@@ -535,6 +525,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -557,6 +548,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
