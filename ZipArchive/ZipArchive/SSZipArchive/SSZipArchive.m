@@ -364,6 +364,7 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
                 // ignoring resource forks: https://superuser.com/questions/104500/what-is-macosx-folder
                 unzCloseCurrentFile(zip);
                 ret = unzGoToNextFile(zip);
+                free(filename);
                 continue;
             }
             if (!strPath.length) {
@@ -857,10 +858,12 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
 
 + (NSString *)_filenameStringWithCString:(const char *)filename size:(uint16_t)size_filename
 {
+    // attempting unicode encoding
     NSString * strPath = @(filename);
     if (strPath) {
         return strPath;
     }
+    
     // if filename is non-unicode, detect and transform Encoding
     NSData *data = [NSData dataWithBytes:(const void *)filename length:sizeof(unsigned char) * size_filename];
 #ifdef __MAC_10_13
@@ -886,11 +889,13 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
             }
         }
     }
-    if (!strPath) {
-        // if filename encoding is non-detected, we default to something based on data
-        // _hexString is more readable than _base64RFC4648 for debugging unknown encodings
-        strPath = [data _hexString];
+    if (strPath) {
+        return strPath;
     }
+    
+    // if filename encoding is non-detected, we default to something based on data
+    // _hexString is more readable than _base64RFC4648 for debugging unknown encodings
+    strPath = [data _hexString];
     return strPath;
 }
 
@@ -991,7 +996,7 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo);
 
 int _zipOpenEntry(zipFile entry, NSString *name, const zip_fileinfo *zipfi, int level, NSString *password, BOOL aes)
 {
-    return zipOpenNewFileInZip5(entry, name.fileSystemRepresentation, zipfi, NULL, 0, NULL, 0, NULL, 0, 0, Z_DEFLATED, level, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password.UTF8String, aes);
+    return zipOpenNewFileInZip5(entry, name.fileSystemRepresentation, zipfi, NULL, 0, NULL, 0, NULL, 0, 0, Z_DEFLATED, level, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password.UTF8String, aes, 0);
 }
 
 #pragma mark - Private tools for file info
@@ -1042,6 +1047,11 @@ BOOL _fileIsSymbolicLink(const unz_file_info *fileInfo)
     NSUInteger length = self.length;
     const unsigned char *bytes = self.bytes;
     char *chars = malloc(length * 2);
+    if (chars == NULL) {
+        // we directly raise an exception instead of using NSAssert to make sure assertion is not disabled as this is irrecoverable
+        [NSException raise:@"NSInternalInconsistencyException" format:@"failed malloc" arguments:nil];
+        return nil;
+    }
     char *s = chars;
     NSUInteger i = length;
     while (i--) {
